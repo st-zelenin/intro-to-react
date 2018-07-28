@@ -1,7 +1,7 @@
 {
-  "name": "2",
+  "name": "loaders",
   "version": "1.0.0",
-  "description": "2 - loaders",
+  "description": "",
   "main": "app.js",
   "dependencies": {},
   "devDependencies": {
