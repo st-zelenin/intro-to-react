@@ -1,0 +1,18 @@
+{
+  "name": "5",
+  "version": "1.0.0",
+  "description": "5 - html-webpack-plugin",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "build": "webpack -d",
+    "open": "start ./dist/index.html"
+  },
+  "author": "",
+  "license": "ISC"
+}
