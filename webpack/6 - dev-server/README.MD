@@ -8,6 +8,6 @@ npm i
 ```
 - run
 ```
-npm npm run start
+npm run start
 ```
 - update `app.js` and ensure that the opened page is automatically updated
