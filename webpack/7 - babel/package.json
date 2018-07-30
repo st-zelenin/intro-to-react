@@ -1,0 +1,17 @@
+{
+  "name": "loaders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "build": "webpack -d --devtool none"
+  },
+  "author": "",
+  "license": "ISC"
+}
