@@ -1,30 +1,22 @@
 import orderBy from 'lodash/orderBy';
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+
+import { deleteStudent, getStudents } from './actions';
 
 class AComponent extends Component {
 
   state = {
-    students: [
-      { id: 1, name: 'Катя', age: 22, score: 52 },
-      { id: 2, name: 'Вася', age: 21, score: 55 },
-      { id: 3, name: 'Коля', age: 23, score: 45 },
-      { id: 4, name: 'Петя', age: 20, score: 50 },
-      { id: 5, name: 'Ира', age: 22, score: 58 },
-      { id: 6, name: 'Оля', age: 21, score: 65 },
-    ],
     sorting: {},
   };
 
-  handleDelete = (id) => {
-    this.setState(({ students }) => {
-      const index = students.indexOf(id);
-      students.splice(index, 1);
-      return { students };
-    });
+  componentDidMount() {
+    this.props.getStudents();
   };
 
-  handleColumnSort = (column) => {
+  handleColumnSort = column => {
     this.setState(({ sorting }) => {
 
       if (!sorting.column) {
@@ -41,10 +33,12 @@ class AComponent extends Component {
 
       return { sorting: { column, direction: 'desc' } };
     });
-  }
+  };
 
   render() {
-    const { students, sorting } = this.state;
+    const { sorting } = this.state;
+    const { students = [], deleteStudent } = this.props;
+
     const sortedStudents = !sorting.column
       ? [...students]
       : orderBy(students, [sorting.column], [sorting.direction]);
@@ -74,7 +68,7 @@ class AComponent extends Component {
                 <td>{student.age}</td>
                 <td>{student.score}</td>
                 <td>
-                  <button onClick={() => this.handleDelete(student.id)}>x</button>
+                  <button onClick={() => deleteStudent(student.id)}>x</button>
                 </td>
               </tr>
             ))}
@@ -83,6 +77,15 @@ class AComponent extends Component {
       </Fragment>
     );
   };
-}
+};
 
-export default withRouter(AComponent);
+const mapStateToProps = state => ({
+  students: state.students,
+});
+
+const withStore = connect(mapStateToProps, {
+  getStudents,
+  deleteStudent,
+});
+
+export default compose(withStore, withRouter)(AComponent);
