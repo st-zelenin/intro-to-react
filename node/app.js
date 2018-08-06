@@ -26,6 +26,16 @@ app.get('/students', (req, res) => {
   res.json(students);
 });
 
+app.get('/students/:id', (req, res) => {
+  const { id } = req.params;
+  const student = students.find(s => s.id == id);
+  if (!student) {
+    res.status(500).send('student not found');
+  } else {
+    res.json(student);
+  }
+});
+
 app.post('/students', (req, res) => {
   const student = req.body;
   console.log(student);
