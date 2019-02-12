@@ -38,7 +38,6 @@ app.get('/students/:id', (req, res) => {
 
 app.post('/students', (req, res) => {
   const student = req.body;
-  console.log(student);
   student.id = ++idCount;
 
   students.push(student);

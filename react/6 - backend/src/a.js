@@ -42,11 +42,19 @@ class AComponent extends Component {
 
   render() {
     const { sorting } = this.state;
-    const { students = [], deleteStudent } = this.props;
+    const { students = [], deleteStudent, error, loading } = this.props;
 
     const sortedStudents = !sorting.column
       ? [...students]
       : orderBy(students, [sorting.column], [sorting.direction]);
+
+    if (loading) {
+      return <div>Loading..</div>
+    }
+
+    if (error) {
+      return <div>{JSON.stringify(error)}</div>
+    }
 
     return (
       <Fragment>
@@ -86,6 +94,8 @@ class AComponent extends Component {
 
 const mapStateToProps = state => ({
   students: state.students,
+  loading: state.loading,
+  error: state.error,
 });
 
 const withStore = connect(mapStateToProps, {
