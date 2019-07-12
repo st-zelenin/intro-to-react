@@ -14,3 +14,8 @@ new packages in `package.json`:
   }
 ```
 
+## problem with `/admin/details` route
+it fails to load until until:
+- either `base` tag is defined in `index.html`
+- or `output.publicPath` is ser in `webpack.config.js`
+

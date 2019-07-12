@@ -5,8 +5,6 @@ import A from './a';
 import B from './b';
 import C from './c';
 
-
-
 const AppComponent = () => (
   <Fragment>
     <h1>I have routes!</h1>
@@ -14,7 +12,7 @@ const AppComponent = () => (
       <Switch>
         <Route path="/" exact component={A} />
         <Route path="/b" component={B} />
-        <Route path="/c" component={C} />
+        <Route path="/admin/details/" component={C} />
         <Redirect to="/" />
       </Switch>
     </Router>
