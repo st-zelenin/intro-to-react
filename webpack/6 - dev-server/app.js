@@ -1,1 +1,1 @@
-document.getElementById('hello').innerText = 'Hello!!!!'
+document.getElementById('hello').innerText = 'Hello!'
